@@ -21,6 +21,8 @@ Upgrade topics:
 - [Provider Version Configuration](#provider-version-configuration)
 - [Data Source: aws_availability_zones](#data-source-aws_availability_zones)
 - [Data Source: aws_lambda_invocation](#data-source-aws_lambda_invocation)
+- [Resource: aws_dx_gateway_association](#resource-aws_dx_gateway_association)
+- [Resource: aws_dx_gateway_association_proposal](#resource-aws_dx_gateway_association_proposal)
 - [Resource: aws_emr_cluster](#resource-aws_emr_cluster)
 
 <!-- /TOC -->
@@ -118,6 +120,58 @@ An updated configuration:
 # to convert a result JSON string to native Terraform types.
 output "lambda_result" {
   value = jsondecode(data.aws_lambda_invocation.example.result)["key1"]
+}
+```
+
+## Resource: aws_dx_gateway_association
+
+### vpn_gateway_id Argument Removal
+
+Switch your Terraform configuration to the `associated_gateway_id` argument instead.
+
+For example, given this previous configuration:
+
+```hcl
+resource "aws_dx_gateway_association" "example" {
+  # ... other configuration ...
+
+  vpn_gateway_id = aws_vpn_gateway.example.id
+}
+```
+
+An updated configuration:
+
+```hcl
+resource "aws_dx_gateway_association" "example" {
+  # ... other configuration ...
+
+  associated_gateway_id = aws_vpn_gateway.example.id
+}
+```
+
+## Resource: aws_dx_gateway_association_proposal
+
+### vpn_gateway_id Argument Removal
+
+Switch your Terraform configuration to the `associated_gateway_id` argument instead.
+
+For example, given this previous configuration:
+
+```hcl
+resource "aws_dx_gateway_association_proposal" "example" {
+  # ... other configuration ...
+
+  vpn_gateway_id = aws_vpn_gateway.example.id
+}
+```
+
+An updated configuration:
+
+```hcl
+resource "aws_dx_gateway_association_proposal" "example" {
+  # ... other configuration ...
+
+  associated_gateway_id = aws_vpn_gateway.example.id
 }
 ```
 
