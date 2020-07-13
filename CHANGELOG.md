@@ -1,4 +1,25 @@
 ## 3.0.0 (Unreleased)
+
+BREAKING CHANGES
+
+* provider: All "removed" attributes are cut, using them would result in a Terraform Core level error [GH-14001]
+* provider: Credential ordering has changed from static, environment, shared credentials, EC2 metadata, default AWS Go SDK (shared configuration, web identity, ECS, EC2 Metadata) to static, environment, shared credentials, default AWS Go SDK (shared configuration, web identity, ECS, EC2 Metadata) [GH-14077]
+* provider: The `AWS_METADATA_TIMEOUT` environment variable no longer has any effect as we now depend on the default AWS Go SDK EC2 Metadata client timeout of one second with two retries [GH-14077]
+* resource/aws_dx_gateway: Remove automatic `aws_dx_gateway_association` resource import [GH-14124]
+* resource/aws_s3_bucket: Remove automatic `aws_s3_bucket_policy` resource import [GH-14121]
+
+ENHANCEMENTS
+
+* provider: Always enable shared configuration file support (no longer require `AWS_SDK_LOAD_CONFIG` environment variable) [GH-14077]
+* provider: Add `assume_role` configuration block `duration_seconds`, `policy_arns`, `tags`, and `transitive_tag_keys` arguments [GH-14077]
+
+BUG FIXES
+
+* provider: Ensure nil is not passed to RetryError helpers, may result in some bug fixes [GH-14104]
+* provider: Ensure configured STS endpoint is used during `AssumeRole` API calls [GH-14077]
+* provider: Prefer AWS shared configuration over EC2 metadata credentials by default [GH-14077]
+* provider: Prefer CodeBuild, ECS, EKS credentials over EC2 metadata credentials by default [GH-14077]
+
 ## 2.70.0 (July 10, 2020)
 
 FEATURES:

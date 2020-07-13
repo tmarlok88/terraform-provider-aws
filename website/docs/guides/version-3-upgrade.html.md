@@ -8,9 +8,7 @@ description: |-
 
 # Terraform AWS Provider Version 3 Upgrade Guide
 
-~> **NOTE:** This upgrade guide is a work in progress and will not be completed until the release of version 3.0.0 of the provider in the coming months. Many of the topics discussed, except for the actual provider upgrade, can be performed using the most recent 2.X version of the provider.
-
-Version 3.0.0 of the AWS provider for Terraform is a major release and includes some changes that you will need to consider when upgrading. This guide is intended to help with that process and focuses only on changes from version 1.X to version 3.0.0.
+Version 3.0.0 of the AWS provider for Terraform is a major release and includes some changes that you will need to consider when upgrading. This guide is intended to help with that process and focuses only on changes from version 2.X to version 3.0.0. See the [Version 2 Upgrade Guide](/docs/providers/aws/guides/version-2-upgrade.html) for information about upgrading from 1.X to version 2.0.0.
 
 Most of the changes outlined in this guide have been previously marked as deprecated in the Terraform plan/apply output throughout previous provider releases. These changes, such as deprecation notices, can always be found in the [Terraform AWS Provider CHANGELOG](https://github.com/terraform-providers/terraform-provider-aws/blob/master/CHANGELOG.md).
 
@@ -19,17 +17,19 @@ Upgrade topics:
 <!-- TOC depthFrom:2 depthTo:2 -->
 
 - [Provider Version Configuration](#provider-version-configuration)
+- [Provider Authentication Updates](#provider-authentication-updates)
 - [Data Source: aws_availability_zones](#data-source-aws_availability_zones)
 - [Data Source: aws_lambda_invocation](#data-source-aws_lambda_invocation)
+- [Resource: aws_dx_gateway](#resource-aws_dx_gateway)
 - [Resource: aws_dx_gateway_association](#resource-aws_dx_gateway_association)
 - [Resource: aws_dx_gateway_association_proposal](#resource-aws_dx_gateway_association_proposal)
 - [Resource: aws_emr_cluster](#resource-aws_emr_cluster)
+- [Resource: aws_lb_listener_rule](#resource-aws_lb_listener_rule)
+- [Resource: aws_s3_bucket](#resource-aws_s3_bucket)
 
 <!-- /TOC -->
 
 ## Provider Version Configuration
-
-!> **WARNING:** This topic is placeholder documentation until version 3.0.0 is released in the coming months.
 
 -> Before upgrading to version 3.0.0, it is recommended to upgrade to the most recent 2.X version of the provider and ensure that your environment successfully runs [`terraform plan`](https://www.terraform.io/docs/commands/plan.html) without unexpected changes or deprecation notices.
 
@@ -41,7 +41,7 @@ For example, given this previous configuration:
 provider "aws" {
   # ... other configuration ...
 
-  version = "~> 2.8"
+  version = "~> 2.70"
 }
 ```
 
@@ -54,6 +54,35 @@ provider "aws" {
   version = "~> 3.0"
 }
 ```
+
+## Provider Authentication Updates
+
+### Authentication Ordering
+
+Previously, the provider preferred credentials in the following order:
+
+- Static credentials (those defined in the Terraform configuration)
+- Environment variables (e.g. `AWS_ACCESS_KEY_ID` or `AWS_PROFILE`)
+- Shared credentials file (e.g. `~/.aws/credentials`)
+- EC2 Instance Metadata Service
+- Default AWS Go SDK handling (shared configuration, CodeBuild/ECS/EKS)
+
+The provider now prefers the following credential ordering:
+
+- Static credentials (those defined in the Terraform configuration)
+- Environment variables (e.g. `AWS_ACCESS_KEY_ID` or `AWS_PROFILE`)
+- Shared credentials and/or configuration file (e.g. `~/.aws/credentials` and `~/.aws/config`)
+- Default AWS Go SDK handling (shared configuration, CodeBuild/ECS/EKS, EC2 Instance Metadata Service)
+
+This means workarounds of disabling the EC2 Instance Metadata Service handling to enable CodeBuild/ECS/EKS credentials or to enable other credential methods such as `credential_process` in the AWS shared configuration are no longer necessary.
+
+### Shared Configuration File Automatically Enabled
+
+The `AWS_SDK_LOAD_CONFIG` environment variable is no longer necessary for the provider to automatically load the AWS shared configuration file (e.g. `~/.aws/config`).
+
+### Removal of AWS_METADATA_TIMEOUT Environment Variable Usage
+
+The provider now relies on the default AWS Go SDK timeouts for interacting with the EC2 Instance Metadata Service.
 
 ## Data Source: aws_availability_zones
 
@@ -122,6 +151,12 @@ output "lambda_result" {
   value = jsondecode(data.aws_lambda_invocation.example.result)["key1"]
 }
 ```
+
+## Resource: aws_dx_gateway
+
+### Removal of Automatic aws_dx_gateway_association Import
+
+Previously when importing the `aws_dx_gateway` resource with the [`terraform import` command](/docs/commands/import.html), the Terraform AWS Provider would automatically attempt to import an associated `aws_dx_gateway_association` resource(s) as well. This automatic resource import has been removed. Use the [`aws_dx_gateway_association` resource import](/docs/providers/aws/r/dx_gateway_association.html#import) to import those resources separately.
 
 ## Resource: aws_dx_gateway_association
 
@@ -341,3 +376,9 @@ resource "aws_lb_listener_rule" "example" {
   }
 }
 ```
+
+## Resource: aws_s3_bucket
+
+### Removal of Automatic aws_s3_bucket_policy Import
+
+Previously when importing the `aws_s3_bucket` resource with the [`terraform import` command](/docs/commands/import.html), the Terraform AWS Provider would automatically attempt to import an associated `aws_s3_bucket_policy` resource as well. This automatic resource import has been removed. Use the [`aws_s3_bucket_policy` resource import](/docs/providers/aws/r/s3_bucket_policy.html#import) to import that resource separately.
