@@ -31,6 +31,8 @@ Upgrade topics:
 - [Resource: aws_launch_template](#resource-aws_launch_template)
 - [Resource: aws_lb_listener_rule](#resource-aws_lb_listener_rule)
 - [Resource: aws_msk_cluster](#resource-aws_msk_cluster)
+- [Resource: aws_route53_resolver_rule](#resource-aws_route53_resolver_rule)
+- [Resource: aws_route53_zone](#resource-aws_route53_zone)
 - [Resource: aws_s3_bucket](#resource-aws_s3_bucket)
 - [Resource: aws_security_group](#resource-aws_security_group)
 - [Resource: aws_sns_platform_application](#resource-aws_sns_platform_application)
@@ -474,6 +476,18 @@ resource "aws_msk_cluster" "example" {
   }
 }
 ```
+
+## Resource: aws_route53_resolver_rule
+
+### Removal of domain_name trailing period
+
+Previously the resource returned the Domain Name directly from the API, which included a `.` suffix. This proves difficult when many other AWS services do not accept this trailing period (e.g. API Gateway Domain Name). This period is now automatically removed. For example, when the attribute would previously return a Domain Name such as `www.example.com.`, the attribute now will be returned as `www.example.com`.
+
+## Resource: aws_route53_zone
+
+### Removal of name trailing period
+
+Previously the resource returned the Hosted Zone Domain Name directly from the API, which included a `.` suffix. This proves difficult when many other AWS services do not accept this trailing period (e.g. API Gateway Domain Name). This period is now automatically removed. For example, when the attribute would previously return a Hosted Zone Domain Name such as `www.example.com.`, the attribute now will be returned as `www.example.com`.
 
 ## Resource: aws_s3_bucket
 
