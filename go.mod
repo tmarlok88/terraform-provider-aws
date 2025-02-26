@@ -33,7 +33,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/applicationsignals v1.7.11
 	github.com/aws/aws-sdk-go-v2/service/appmesh v1.29.16
 	github.com/aws/aws-sdk-go-v2/service/apprunner v1.32.16
-	github.com/aws/aws-sdk-go-v2/service/appstream v1.43.3
+	github.com/aws/aws-sdk-go-v2/service/appstream v1.44.0
 	github.com/aws/aws-sdk-go-v2/service/appsync v1.43.1
 	github.com/aws/aws-sdk-go-v2/service/athena v1.49.11
 	github.com/aws/aws-sdk-go-v2/service/auditmanager v1.37.16
@@ -43,7 +43,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/batch v1.49.13
 	github.com/aws/aws-sdk-go-v2/service/bcmdataexports v1.7.16
 	github.com/aws/aws-sdk-go-v2/service/bedrock v1.26.8
-	github.com/aws/aws-sdk-go-v2/service/bedrockagent v1.35.1
+	github.com/aws/aws-sdk-go-v2/service/bedrockagent v1.36.0
 	github.com/aws/aws-sdk-go-v2/service/billing v1.1.8
 	github.com/aws/aws-sdk-go-v2/service/budgets v1.29.11
 	github.com/aws/aws-sdk-go-v2/service/chatbot v1.9.10
@@ -62,7 +62,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/cloudwatch v1.43.15
 	github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs v1.45.14
 	github.com/aws/aws-sdk-go-v2/service/codeartifact v1.33.16
-	github.com/aws/aws-sdk-go-v2/service/codebuild v1.53.0
+	github.com/aws/aws-sdk-go-v2/service/codebuild v1.54.0
 	github.com/aws/aws-sdk-go-v2/service/codecatalyst v1.17.16
 	github.com/aws/aws-sdk-go-v2/service/codecommit v1.27.16
 	github.com/aws/aws-sdk-go-v2/service/codeconnections v1.5.16
@@ -76,7 +76,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider v1.49.5
 	github.com/aws/aws-sdk-go-v2/service/comprehend v1.35.19
 	github.com/aws/aws-sdk-go-v2/service/computeoptimizer v1.41.8
-	github.com/aws/aws-sdk-go-v2/service/configservice v1.51.13
+	github.com/aws/aws-sdk-go-v2/service/configservice v1.51.14
 	github.com/aws/aws-sdk-go-v2/service/connect v1.125.1
 	github.com/aws/aws-sdk-go-v2/service/connectcases v1.22.1
 	github.com/aws/aws-sdk-go-v2/service/controltower v1.20.10
@@ -92,7 +92,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/datazone v1.25.10
 	github.com/aws/aws-sdk-go-v2/service/dax v1.23.16
 	github.com/aws/aws-sdk-go-v2/service/detective v1.31.16
-	github.com/aws/aws-sdk-go-v2/service/devicefarm v1.28.16
+	github.com/aws/aws-sdk-go-v2/service/devicefarm v1.29.0
 	github.com/aws/aws-sdk-go-v2/service/devopsguru v1.34.16
 	github.com/aws/aws-sdk-go-v2/service/directconnect v1.30.13
 	github.com/aws/aws-sdk-go-v2/service/directoryservice v1.30.18
@@ -101,13 +101,13 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/docdbelastic v1.14.13
 	github.com/aws/aws-sdk-go-v2/service/drs v1.30.16
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.40.2
-	github.com/aws/aws-sdk-go-v2/service/ec2 v1.203.1
+	github.com/aws/aws-sdk-go-v2/service/ec2 v1.204.0
 	github.com/aws/aws-sdk-go-v2/service/ecr v1.41.1
 	github.com/aws/aws-sdk-go-v2/service/ecrpublic v1.31.3
 	github.com/aws/aws-sdk-go-v2/service/ecs v1.53.16
 	github.com/aws/aws-sdk-go-v2/service/efs v1.34.12
 	github.com/aws/aws-sdk-go-v2/service/eks v1.58.1
-	github.com/aws/aws-sdk-go-v2/service/elasticache v1.44.13
+	github.com/aws/aws-sdk-go-v2/service/elasticache v1.44.14
 	github.com/aws/aws-sdk-go-v2/service/elasticbeanstalk v1.28.17
 	github.com/aws/aws-sdk-go-v2/service/elasticloadbalancing v1.28.18
 	github.com/aws/aws-sdk-go-v2/service/elasticloadbalancingv2 v1.43.13
@@ -119,7 +119,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/eventbridge v1.36.12
 	github.com/aws/aws-sdk-go-v2/service/evidently v1.23.16
 	github.com/aws/aws-sdk-go-v2/service/finspace v1.28.16
-	github.com/aws/aws-sdk-go-v2/service/firehose v1.36.5
+	github.com/aws/aws-sdk-go-v2/service/firehose v1.36.6
 	github.com/aws/aws-sdk-go-v2/service/fis v1.32.1
 	github.com/aws/aws-sdk-go-v2/service/fms v1.39.7
 	github.com/aws/aws-sdk-go-v2/service/fsx v1.52.1
@@ -130,7 +130,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/grafana v1.26.16
 	github.com/aws/aws-sdk-go-v2/service/greengrass v1.27.16
 	github.com/aws/aws-sdk-go-v2/service/groundstation v1.31.18
-	github.com/aws/aws-sdk-go-v2/service/guardduty v1.53.0
+	github.com/aws/aws-sdk-go-v2/service/guardduty v1.53.1
 	github.com/aws/aws-sdk-go-v2/service/healthlake v1.29.4
 	github.com/aws/aws-sdk-go-v2/service/iam v1.39.2
 	github.com/aws/aws-sdk-go-v2/service/identitystore v1.27.17
@@ -139,7 +139,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/inspector2 v1.34.10
 	github.com/aws/aws-sdk-go-v2/service/internetmonitor v1.20.14
 	github.com/aws/aws-sdk-go-v2/service/invoicing v1.0.9
-	github.com/aws/aws-sdk-go-v2/service/iot v1.62.9
+	github.com/aws/aws-sdk-go-v2/service/iot v1.63.0
 	github.com/aws/aws-sdk-go-v2/service/iotanalytics v1.26.16
 	github.com/aws/aws-sdk-go-v2/service/iotevents v1.27.16
 	github.com/aws/aws-sdk-go-v2/service/ivs v1.42.11
@@ -166,7 +166,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/macie2 v1.44.10
 	github.com/aws/aws-sdk-go-v2/service/mediaconnect v1.37.9
 	github.com/aws/aws-sdk-go-v2/service/mediaconvert v1.67.1
-	github.com/aws/aws-sdk-go-v2/service/medialive v1.68.0
+	github.com/aws/aws-sdk-go-v2/service/medialive v1.68.1
 	github.com/aws/aws-sdk-go-v2/service/mediapackage v1.34.16
 	github.com/aws/aws-sdk-go-v2/service/mediapackagev2 v1.20.11
 	github.com/aws/aws-sdk-go-v2/service/mediapackagevod v1.34.17
@@ -250,11 +250,11 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/sts v1.33.15
 	github.com/aws/aws-sdk-go-v2/service/swf v1.27.20
 	github.com/aws/aws-sdk-go-v2/service/synthetics v1.31.15
-	github.com/aws/aws-sdk-go-v2/service/taxsettings v1.7.10
+	github.com/aws/aws-sdk-go-v2/service/taxsettings v1.8.0
 	github.com/aws/aws-sdk-go-v2/service/timestreaminfluxdb v1.9.1
 	github.com/aws/aws-sdk-go-v2/service/timestreamquery v1.29.10
 	github.com/aws/aws-sdk-go-v2/service/timestreamwrite v1.29.17
-	github.com/aws/aws-sdk-go-v2/service/transcribe v1.43.2
+	github.com/aws/aws-sdk-go-v2/service/transcribe v1.43.3
 	github.com/aws/aws-sdk-go-v2/service/transfer v1.56.4
 	github.com/aws/aws-sdk-go-v2/service/verifiedpermissions v1.21.3
 	github.com/aws/aws-sdk-go-v2/service/vpclattice v1.13.11
